@@ -19,6 +19,8 @@
     "@vue/cli-service": "^3.7.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^5.0.0",
     "prettier": "^2.1.2",
     "stylus": "^0.54.5",
@@ -32,9 +34,14 @@
     "env": {
       "node": true
     },
+    "plugins": [
+      "prettier",
+      "eslint-plugin-prettier"
+    ],
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "eslint-config-prettier"
     ],
     "rules": {
       "prettier/prettier": "error",
@@ -48,6 +55,7 @@
       "no-return-await": "off",
       "no-underscore-dangle": "off",
       "class-methods-use-this": "off",
+      "fix": true,
       "prefer-destructuring": [
         "error",
         {
