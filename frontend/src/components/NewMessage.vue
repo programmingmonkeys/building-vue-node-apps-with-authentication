@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+import store from '../store'
 
 export default {
   data() {
@@ -36,7 +37,7 @@ export default {
           })
         ).data
 
-        this.$root.$emit('newMessage', msg.message)
+        store.state.messages.push(msg.message)
       } catch (error) {
         console.error(error)
       }

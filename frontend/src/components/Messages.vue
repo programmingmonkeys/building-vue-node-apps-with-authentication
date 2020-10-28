@@ -5,7 +5,7 @@
         <v-toolbar-title>Messages</v-toolbar-title>
       </v-toolbar>
       <v-list>
-        <v-list-tile v-for="(message, i) in messages" :key="i">
+        <v-list-tile v-for="(message, i) in store.state.messages" :key="i">
           <v-list-tile-content>
             <v-list-tile-title v-text="message"></v-list-tile-title>
           </v-list-tile-content>
@@ -16,19 +16,16 @@
 </template>
 <script>
 import axios from 'axios'
+import store from '../store'
 
 export default {
   data() {
     return {
-      messages: [],
+      store,
     }
   },
   async created() {
-    this.$root.$on('newMessage', (message) => {
-      this.messages.push(message)
-    })
-
-    this.messages = (await axios.get('http://localhost:3000/messages')).data
+    store.state.messages = (await axios.get('http://localhost:3000/messages')).data
   },
 }
 </script>
