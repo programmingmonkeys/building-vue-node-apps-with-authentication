@@ -7,7 +7,8 @@
       <v-list>
         <v-list-tile v-for="(message, i) in $store.state.messages" :key="i" :to="`message/${i}`">
           <v-list-tile-content>
-            <v-list-tile-title v-text="message"></v-list-tile-title>
+            <v-list-tile-title v-text="message.text"></v-list-tile-title>
+            <v-list-tile-sub-title v-text="message.user"></v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
