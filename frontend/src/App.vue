@@ -1,16 +1,15 @@
 <template>
   <v-app>
     <v-toolbar app>
-      <v-btn flat>Messages</v-btn>
+      <v-btn flat to="/">Messages</v-btn>
+      <v-btn flat to="/NewMessage">New Message</v-btn>
       <v-spacer />
       <v-btn flat>Login</v-btn>
     </v-toolbar>
 
     <v-content>
       <br />
-      <NewMessage />
-      <br />
-      <Messages />
+      <router-view />
     </v-content>
   </v-app>
 </template>
