@@ -1,17 +1,21 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+require('dotenv').config()
+
+const jwt = require('jsonwebtoken')
+
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(cors())
 app.use(bodyParser.json())
 
 let messages = [
-  { user: 'Foo', text: 'yes' },
-  { user: 'Bar', text: 'each' },
+  { user: 'Jim', text: 'yes' },
+  { user: 'Jim', text: 'messages' },
 ]
-let users = [{ userName: 'Foo', password: '1' }]
+let users = [{ userName: 'Jim', password: '1' }]
 
 app.get('/messages', (req, res) => {
   res.send(messages)
@@ -32,10 +36,11 @@ app.post('/messages', (req, res) => {
 app.post('/register', (req, res) => {
   let registerData = req.body
   let newIndex = users.push(registerData)
-  registerData.id = newIndex - 1
-  console.log(users)
+  let userId = newIndex - 1
 
-  res.json(registerData)
+  let token = jwt.sign(userId, process.env.JSON_WEB_TOKEN)
+
+  res.json(token)
 })
 
 app.listen(port, () => console.log('app running'))
