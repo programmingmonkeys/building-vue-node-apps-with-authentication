@@ -31,18 +31,21 @@
 
     <v-main>
       <Messages />
+      <NewMessages />
     </v-main>
   </v-app>
 </template>
 
 <script>
 import Messages from './components/Messages'
+import NewMessages from './components/NewMessages'
 
 export default {
   name: 'App',
 
   components: {
     Messages,
+    NewMessages,
   },
 
   data: () => ({
