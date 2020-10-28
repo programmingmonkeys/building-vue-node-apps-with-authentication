@@ -19,6 +19,10 @@ export default new Vuex.Store({
     auth(state, token) {
       state.token = token
     },
+    logout(state) {
+      state.token = ''
+      localStorage.clear('token')
+    },
   },
   actions: {
     async getMessages({ commit }) {
