@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken')
 
 const app = express()
 const port = process.env.VUE_APP_PORT || 4000
-const api_url = process.env.VUE_APP_ROOT_URL || 'http://localhost'
 
 app.use(cors())
 app.use(bodyParser.json())

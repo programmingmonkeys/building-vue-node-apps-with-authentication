@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     messages: [],
+    token: localStorage.getItem('token') || '',
   },
   mutations: {
     updateMessages(state, messages) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     newMessage(state, message) {
       state.messages.push(message)
+    },
+    auth(state, token) {
+      state.token = token
     },
   },
   actions: {
@@ -23,21 +27,20 @@ export default new Vuex.Store({
     },
     async newMessage({ commit }, messageBody) {
       let msg = (
-        await axios.post(`http://localhost:3000/messages`, {
+        await axios.post('http://localhost:3000/messages', {
           message: messageBody,
         })
       ).data
       commit('newMessage', msg.message)
     },
-    // eslint-disable-next-line
     async getMessage({ commit }, id) {
       return axios.get(`http://localhost:3000/messages/${id}`)
     },
-    // eslint-disable-next-line
     async register({ commit }, registerData) {
-      let token = (await axios.post(`http://localhost:3000/register`, registerData)).data
+      let token = (await axios.post('http://localhost:3000/register', registerData)).data
       localStorage.setItem('token', token)
       axios.defaults.headers.common['Authorization'] = token
+      commit('auth', token)
     },
   },
 })
