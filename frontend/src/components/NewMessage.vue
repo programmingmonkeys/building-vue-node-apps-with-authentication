@@ -2,18 +2,22 @@
   <v-flex sm8 offset-sm2>
     <v-card>
       <v-toolbar dark>
-        <v-toolbar-title>Messages</v-toolbar-title>
+        <v-toolbar-title>New Message</v-toolbar-title>
       </v-toolbar>
-      <v-list>
-        <v-list-tile v-for="message in messages" @click>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="message"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+      <v-form>
+        <v-container>
+          <v-layout>
+            <v-flex xs12 md4>
+              <v-text-field label="Message" required></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-container>
+        <v-btn @click>submit</v-btn>
+      </v-form>
     </v-card>
   </v-flex>
 </template>
+
 <script>
 import axios from 'axios'
 

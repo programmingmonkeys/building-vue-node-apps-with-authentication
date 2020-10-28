@@ -5,30 +5,26 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "start": "npm run serve"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.21.0",
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11",
+    "axios": "^0.18.0",
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
     "vuetify": "^1.5.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^6.2.2",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
     "prettier": "^2.1.2",
-    "sass": "^1.19.0",
-    "sass-loader": "^8.0.0",
-    "vue-cli-plugin-vuetify": "~2.0.7",
-    "vue-template-compiler": "^2.6.11",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-vuetify": "^0.5.0",
+    "vue-template-compiler": "^2.5.21",
     "vuetify-loader": "^1.0.5"
   },
   "eslintConfig": {
@@ -36,19 +32,10 @@
     "env": {
       "node": true
     },
-    "parser": "vue-eslint-parser",
-    "plugins": [
-      "prettier",
-      "eslint-plugin-prettier"
-    ],
     "extends": [
-      "@vue/prettier",
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
     "rules": {
       "prettier/prettier": "error",
       "spaced-comment": "off",
@@ -82,11 +69,18 @@
         2,
         "always"
       ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
     }
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not dead"
+    "last 2 versions"
   ]
 }
