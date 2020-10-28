@@ -45,4 +45,18 @@ app.post('/register', (req, res) => {
   res.json(token)
 })
 
+app.post('/login', (req, res) => {
+  let loginData = req.body
+
+  let userId = users.findIndex((user) => user.userName == loginData.userName)
+
+  if (userId == -1) return res.status(401).send({ message: 'name or password is invalid' })
+
+  if (users[userId].password != loginData.password) return res.status(401).send({ message: 'name or password is invalid' })
+
+  let token = jwt.sign(userId, process.env.VUE_APP_JSON_WEB_TOKEN)
+
+  res.json(token)
+})
+
 app.listen(port, () => console.log(`app running on port: ${process.env.VUE_APP_PORT}`))

@@ -2,7 +2,7 @@
   <v-flex sm8 offset-sm2>
     <v-card>
       <v-toolbar dark>
-        <v-toolbar-title>Register</v-toolbar-title>
+        <v-toolbar-title>Login</v-toolbar-title>
       </v-toolbar>
       <v-form>
         <v-container>
@@ -15,7 +15,7 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <v-btn @click="register">Register</v-btn>
+        <v-btn @click="login">Logn</v-btn>
       </v-form>
     </v-card>
   </v-flex>
@@ -32,8 +32,8 @@ export default {
     }
   },
   methods: {
-    async register() {
-      this.$store.dispatch('register', { userName: this.userName, password: this.password })
+    async login() {
+      this.$store.dispatch('login', { userName: this.userName, password: this.password })
     },
   },
 }
