@@ -1,22 +1,23 @@
 <template>
   <div>
     <h4 class="display-1">Messages</h4>
-    <v-list>
-      <v-list-tile v-for="(message, i) in messages" :key="i">
-        <v-list-tile-content>
-          <v-list-tile-title v-text="message"></v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list>
+    <ul v-for="(message, i) in messages" :key="i">
+      <li :key="i">{{ message }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
-      messages: ['hello', 'hi', 'its working'],
+      messages: [],
     }
+  },
+  async created() {
+    this.messages = (await axios.get('http://localhost:3000/messages')).data
   },
 }
 </script>
