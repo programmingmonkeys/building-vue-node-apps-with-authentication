@@ -32,5 +32,8 @@ export default new Vuex.Store({
     async getMessage({ commit }, id) {
       return axios.get(`http://localhost:3000/messages/${id}`)
     },
+    async register({ commit }, registerData) {
+      await axios.post('http://localhost:3000/register', registerData)
+    },
   },
 })
